@@ -26,10 +26,10 @@
         />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="edit__button"></button>
+          <button class="profile__edit-button hover"></button>
           <h2 class="profile__occupation">Исследователь океана</h2>
         </div>
-        <button class="add__button" value=""></button>
+        <button class="add__button hover" value=""></button>
       </section>
       <section class="elements">
         <div class="grid__element">
@@ -40,7 +40,7 @@
           />
           <div class="grid__content">
             <p class="text-grid__element">Карачаевск</p>
-            <button class="like__button"></button>
+            <button class="like__button hover"></button>
           </div>
         </div>
         <div class="grid__element">
@@ -51,7 +51,7 @@
           />
           <div class="grid__content">
             <p class="text-grid__element">Гора Эльбрус</p>
-            <button class="like__button"></button>
+            <button class="like__button hover"></button>
           </div>
         </div>
         <div class="grid__element">
@@ -62,7 +62,7 @@
           />
           <div class="grid__content">
             <p class="text-grid__element">Домбай</p>
-            <button class="like__button"></button>
+            <button class="like__button hover"></button>
           </div>
         </div>
         <div class="grid__element">
@@ -73,7 +73,7 @@
           />
           <div class="grid__content">
             <p class="text-grid__element">Гора Эльбрус</p>
-            <button class="like__button"></button>
+            <button class="like__button hover"></button>
           </div>
         </div>
         <div class="grid__element">
@@ -84,7 +84,7 @@
           />
           <div class="grid__content">
             <p class="text-grid__element">Домбай</p>
-            <button class="like__button"></button>
+            <button class="like__button hover"></button>
           </div>
         </div>
         <div class="grid__element">
@@ -95,7 +95,7 @@
           />
           <div class="grid__content">
             <p class="text-grid__element">Карачаево-Черкессия</p>
-            <button class="like__button"></button>
+            <button class="like__button hover"></button>
           </div>
         </div>
       </section>
@@ -103,5 +103,23 @@
         <p class="footer__coopyright">&copy; 2023 Mesto Russia</p>
       </footer>
     </div>
+    <div class="popup">
+      <div class="popup__body">
+        <div class="popup__content">
+          <button class="popup__close-button hover"></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form" id="form">
+            <label>
+              <input type="text" name="name" class="form__name" />
+            </label>
+            <label>
+              <input type="text" name="occupation" class="form__occupation" />
+            </label>
+            <button class="form__save-button" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./index.js"></script>
   </body>
 </html>
