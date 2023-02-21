@@ -1,0 +1,16 @@
+.page {
+  font-family: "Inter", Arial, sans-serif;
+  color: #ffffff;
+}
+
+@media (max-width: 918px) {
+  .page {
+    margin: 0 19px;
+  }
+}
+
+@media (max-width: 580px) {
+  .page {
+    margin: 0;
+  }
+}

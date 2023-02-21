@@ -1,0 +1,29 @@
+.popup__form-save-button {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  width: 358px;
+  height: 50px;
+  background: #000000;
+  border-radius: 2px;
+  padding: 0;
+}
+
+@media (max-width: 580px) {
+  .popup__form-save-button {
+    font-size: 14px;
+    line-height: 17px;
+    width: 238px;
+    height: 46px;
+  }
+}
+
+.popup__form-save-button:hover {
+  opacity: 0.8;
+}
