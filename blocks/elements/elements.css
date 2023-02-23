@@ -15,7 +15,7 @@
   }
 }
 
-@media (max-width: 617px) {
+@media (max-width: 640px) {
   .elements {
     max-width: 282px;
     grid-template-columns: 100%;

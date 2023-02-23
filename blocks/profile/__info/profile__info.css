@@ -6,7 +6,7 @@
   gap: 14px 18px;
 }
 
-@media (max-width: 617px) {
+@media (max-width: 640px) {
   .profile__info {
     max-width: calc(100% - 38px);
     text-align: center;
