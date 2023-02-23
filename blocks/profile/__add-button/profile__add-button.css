@@ -11,9 +11,11 @@
   background-image: url(../../../images/cross_button.svg);
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
+  border-radius: 2px;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 617px) {
   .profile__add-button {
     width: 100%;
     background-size: 16px 16px;

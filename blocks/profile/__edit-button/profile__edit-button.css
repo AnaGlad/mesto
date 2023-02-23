@@ -7,9 +7,10 @@
   background-image: url(../../../images/pensil_button.svg);
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 617px) {
   .profile__edit-button {
     width: 18px;
     height: 18px;

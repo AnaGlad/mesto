@@ -1,15 +1,20 @@
-.popup__content {
+.popup__container {
   padding: 34px 31px 37px 41px;
   max-width: 358px;
   background: #ffffff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   position: relative;
+  margin: auto;
+  margin-top: 155px;
+  /* margin-left: 33%;
+  margin-top: 33%; */
 }
 
-@media (max-width: 580px) {
-  .popup__content {
+@media (max-width: 617px) {
+  .popup__container {
     max-width: 238px;
     padding: 25px 22px;
+    margin-top: 87px;
   }
 }

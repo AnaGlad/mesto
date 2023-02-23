@@ -3,13 +3,13 @@
   color: #ffffff;
 }
 
-@media (max-width: 918px) {
+@media (max-width: 917px) {
   .page {
     margin: 0 19px;
   }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 617px) {
   .page {
     margin: 0;
   }

@@ -3,22 +3,17 @@ const editButton = document.querySelector(".profile__edit-button");
 
 const popupCloseButton = document.querySelector(".popup__close-button");
 popupCloseButton.addEventListener("click", function () {
-  popup.classList.remove("popup__opened");
-});
-
-const formSaveButton = document.querySelector(".popup__form-save-button");
-formSaveButton.addEventListener("click", function () {
-  popup.classList.remove("popup__opened");
+  popup.classList.remove("popup_opened");
 });
 
 const profileName = document.querySelector(".profile__name");
 const profileOccupation = document.querySelector(".profile__occupation");
 
-const formName = document.querySelector(".popup__form-name");
-const formOccupation = document.querySelector(".popup__form-occupation");
+const formName = document.querySelector(".popup__form-text_name");
+const formOccupation = document.querySelector(".popup__form-text_occupation");
 
 editButton.addEventListener("click", function () {
-  popup.classList.add("popup__opened");
+  popup.classList.add("popup_opened");
   formName.value = profileName.textContent;
   formOccupation.value = profileOccupation.textContent;
 });
@@ -39,6 +34,7 @@ function handleFormSubmit(evt) {
   profileName.textContent = formName.value;
   profileOccupation.textContent = formOccupation.value;
   // Вставьте новые значения с помощью textContent
+  popup.classList.remove("popup_opened");
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
