@@ -6,13 +6,11 @@
   border-radius: 10px;
   position: relative;
   margin: auto;
-  margin-top: 155px;
 }
 
 @media (max-width: 640px) {
   .popup__container {
     max-width: 238px;
     padding: 25px 22px;
-    margin-top: 87px;
   }
 }

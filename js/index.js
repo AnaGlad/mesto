@@ -9,8 +9,8 @@ popupCloseButton.addEventListener("click", function () {
 const profileName = document.querySelector(".profile__name");
 const profileOccupation = document.querySelector(".profile__occupation");
 
-const formName = document.querySelector(".popup__form-text_name");
-const formOccupation = document.querySelector(".popup__form-text_occupation");
+const formName = document.querySelector(".popup__form-text_type_name");
+const formOccupation = document.querySelector(".popup__form-text_type_occupation");
 
 editButton.addEventListener("click", function () {
   popup.classList.add("popup_opened");
