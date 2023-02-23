@@ -2,19 +2,8 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  /*new*/
   background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
   left: 0;
   top: 0;
   display: none;
-  /* position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-20%, -20%); */
-  /* display: none; */
-  /* display: flex; */
-  /* align-items: center;
-  justify-content: center; */
-  /* position: center; */
 }
