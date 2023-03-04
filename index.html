@@ -30,78 +30,27 @@
           <button class="profile__add-button hover" type="button"></button>
         </section>
         <section class="elements">
-          <div class="elements__grid">
-            <img
-              class="elements__photo-grid"
-              src="./images/karachaevsk_grid.png"
-              alt="Карачаевск"
-            />
-            <div class="elements__grid-content">
-              <h2 class="elements__grid-text">Карачаевск</h2>
-              <button class="elements__like-button" type="button"></button>
+          <template id="elements-template">
+            <div class="elements__grid">
+              <button
+                class="elements__trash-button hover"
+                type="button"
+              ></button>
+              <img class="elements__photo-grid" />
+              <div class="elements__grid-content">
+                <h2 class="elements__grid-text"></h2>
+                <button class="elements__like-button" type="button"></button>
+              </div>
             </div>
-          </div>
-          <div class="elements__grid">
-            <img
-              class="elements__photo-grid"
-              src="./images/elbrus_grid.png"
-              alt="Гора Эльбрус"
-            />
-            <div class="elements__grid-content">
-              <h2 class="elements__grid-text">Гора Эльбрус</h2>
-              <button class="elements__like-button" type="button"></button>
-            </div>
-          </div>
-          <div class="elements__grid">
-            <img
-              class="elements__photo-grid"
-              src="./images/dombay_grid.png"
-              alt="Домбай"
-            />
-            <div class="elements__grid-content">
-              <h2 class="elements__grid-text">Домбай</h2>
-              <button class="elements__like-button" type="button"></button>
-            </div>
-          </div>
-          <div class="elements__grid">
-            <img
-              class="elements__photo-grid"
-              src="./images/elbrus_grid.png"
-              alt="Гора Эльбрус"
-            />
-            <div class="elements__grid-content">
-              <h2 class="elements__grid-text">Гора Эльбрус</h2>
-              <button class="elements__like-button" type="button"></button>
-            </div>
-          </div>
-          <div class="elements__grid">
-            <img
-              class="elements__photo-grid"
-              src="./images/dombay_grid.png"
-              alt="Домбай"
-            />
-            <div class="elements__grid-content">
-              <h2 class="elements__grid-text">Домбай</h2>
-              <button class="elements__like-button" type="button"></button>
-            </div>
-          </div>
-          <div class="elements__grid">
-            <img
-              class="elements__photo-grid"
-              src="./images/karachaevsk_grid.png"
-              alt="Карачаево-Черкессия"
-            />
-            <div class="elements__grid-content">
-              <h2 class="elements__grid-text">Карачаево-Черкессия</h2>
-              <button class="elements__like-button" type="button"></button>
-            </div>
-          </div>
+          </template>
         </section>
       </main>
       <footer class="footer">
+        <script> </script>
+        <!-- для устранения бага transition https://bugs.chromium.org/p/chromium/issues/detail?id=332189 -->
         <p class="footer__coopyright">&copy; 2023 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup_type_edit">
         <div class="popup__container">
           <button class="popup__close-button hover" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
@@ -124,6 +73,40 @@
               Сохранить
             </button>
           </form>
+        </div>
+      </div>
+      <div class="popup popup_type_add">
+        <div class="popup__container">
+          <button class="popup__close-button hover" type="button"></button>
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form" name="add-place-popup">
+            <label>
+              <input
+                type="text"
+                name="place"
+                class="popup__form-text popup__form-text_type_place"
+                placeholder="Название"
+              />
+            </label>
+            <label>
+              <input
+                type="text"
+                name="place-link"
+                class="popup__form-text popup__form-text_type_place-link"
+                placeholder="Ссылка на картинку"
+              />
+            </label>
+            <button class="popup__form-save-button" type="submit">
+              Создать
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup_type_zoomimg">
+        <div class="popup__container-img">
+          <button class="popup__close-button hover" type="button"></button>
+          <img class="popup__photo-zoom" src="#" alt="Изображение" />
+          <h3 class="popup__photo-name"></h3>
         </div>
       </div>
     </div>
