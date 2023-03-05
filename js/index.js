@@ -113,11 +113,11 @@ function handleLikeButton(evt) {
 
 function handleFormSubmitAdd(evt) {
   evt.preventDefault();
-  let newItem = {};
+  const newItem = {};
   newItem.name = formTypePlace.value;
   newItem.link = formTypePlaceLink.value;
   addCard(newItem);
-  popupAddCard.classList.remove('popup_opened');
+  closePopup(popupAddCard);
 }
 
 // Function Call
