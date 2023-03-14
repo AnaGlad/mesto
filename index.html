@@ -24,10 +24,10 @@
           />
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button hover" type="button"></button>
+            <button class="profile__edit-button hover" type="button" title="Save"></button>
             <p class="profile__occupation">Исследователь океана</p>
           </div>
-          <button class="profile__add-button hover" type="button"></button>
+          <button class="profile__add-button hover" type="button" title="Create"></button>
         </section>
         <section class="elements">
           <template id="elements-template">
@@ -52,7 +52,7 @@
       </footer>
       <div class="popup popup_type_edit">
         <div class="popup__container">
-          <button class="popup__close-button hover" type="button"></button>
+          <button class="popup__close-button hover" type="button" title="Close"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" name="edit-profile-popup">
             <label>
@@ -60,16 +60,18 @@
                 type="text"
                 name="name"
                 class="popup__form-text popup__form-text_type_name"
-                placeholder="Имя"
+                placeholder="Имя" minlength="2" maxlength="20" required
               />
+              <span class ="popup__form-text-error popup__form-text-error_type_name">Вы пропустили это поле.</span>
             </label>
             <label>
               <input
                 type="text"
                 name="occupation"
                 class="popup__form-text popup__form-text_type_occupation"
-                placeholder="Вид деятельности"
+                placeholder="Вид деятельности" minlength="2" maxlength="200" required
               />
+            <span class ="popup__form-text-error popup__form-text-error_type_occupation">Вы пропустили это поле.</span>
             </label>
             <button class="popup__form-save-button" type="submit">
               Сохранить
@@ -79,7 +81,7 @@
       </div>
       <div class="popup popup_type_add">
         <div class="popup__container">
-          <button class="popup__close-button hover" type="button"></button>
+          <button class="popup__close-button hover" type="button" title="Close"></button>
           <h2 class="popup__title">Новое место</h2>
           <form class="popup__form" name="add-place-popup">
             <label>
@@ -87,16 +89,17 @@
                 type="text"
                 name="place"
                 class="popup__form-text popup__form-text_type_place"
-                placeholder="Название"
+                placeholder="Название" minlength="2" maxlength="30" required
               />
+            <span class ="popup__form-text-error popup__form-text-error_type_place">Вы пропустили это поле.</span>
             </label>
             <label>
               <input
-                type="text"
                 name="place-link"
                 class="popup__form-text popup__form-text_type_place-link"
-                placeholder="Ссылка на картинку"
+                placeholder="Ссылка на картинку" type="url" required
               />
+            <span class ="popup__form-text-error popup__form-text-error_type_place-link">Вы пропустили это поле.</span>
             </label>
             <button class="popup__form-save-button" type="submit">
               Создать
@@ -106,12 +109,13 @@
       </div>
       <div class="popup popup_type_zoomimg">
         <div class="popup__container-img">
-          <button class="popup__close-button hover" type="button"></button>
+          <button class="popup__close-button hover" type="button" title="Close"></button>
           <img class="popup__photo-zoom" src="#" alt="Изображение" />
           <h3 class="popup__photo-name"></h3>
         </div>
       </div>
     </div>
+    <script src="./js/validate.js"></script>
     <script src="./js/constants.js"></script>
     <script src="./js/index.js"></script>
   </body>
