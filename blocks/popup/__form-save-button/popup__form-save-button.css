@@ -27,3 +27,14 @@
 .popup__form-save-button:hover {
   opacity: 0.8;
 }
+
+.popup__form-save-button_inactive {
+  
+  color: #B8B8B8;
+  background: #EDEDED;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

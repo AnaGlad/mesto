@@ -24,10 +24,18 @@
           />
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button hover" type="button" title="Save"></button>
+            <button
+              class="profile__edit-button hover"
+              type="button"
+              title="Save"
+            ></button>
             <p class="profile__occupation">Исследователь океана</p>
           </div>
-          <button class="profile__add-button hover" type="button" title="Create"></button>
+          <button
+            class="profile__add-button hover"
+            type="button"
+            title="Create"
+          ></button>
         </section>
         <section class="elements">
           <template id="elements-template">
@@ -46,70 +54,105 @@
         </section>
       </main>
       <footer class="footer">
-        <script> </script>
+        <script></script>
         <!-- для устранения бага transition https://bugs.chromium.org/p/chromium/issues/detail?id=332189 -->
         <p class="footer__coopyright">&copy; 2023 Mesto Russia</p>
       </footer>
       <div class="popup popup_type_edit">
         <div class="popup__container">
-          <button class="popup__close-button hover" type="button" title="Close"></button>
+          <button
+            class="popup__close-button hover"
+            type="button"
+            title="Close"
+          ></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="edit-profile-popup">
-            <label>
-              <input
-                type="text"
-                name="name"
-                class="popup__form-text popup__form-text_type_name"
-                placeholder="Имя" minlength="2" maxlength="20" required
-              />
-              <span class ="popup__form-text-error popup__form-text-error_type_name">Вы пропустили это поле.</span>
-            </label>
-            <label>
-              <input
-                type="text"
-                name="occupation"
-                class="popup__form-text popup__form-text_type_occupation"
-                placeholder="Вид деятельности" minlength="2" maxlength="200" required
-              />
-            <span class ="popup__form-text-error popup__form-text-error_type_occupation">Вы пропустили это поле.</span>
-            </label>
-            <button class="popup__form-save-button" type="submit">
-              Сохранить
-            </button>
+          <form class="popup__form" name="edit-profile-popup" novalidate>
+            <fieldset class="popup__form-fieldset">
+              <label>
+                <input
+                  type="text"
+                  name="name"
+                  class="popup__form-text popup__form-text_type_name"
+                  placeholder="Имя"
+                  minlength="2"
+                  maxlength="20"
+                  required
+                />
+                <span
+                  class="popup__form-text-error popup__form-text-error_type_name"
+                ></span>
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="occupation"
+                  class="popup__form-text popup__form-text_type_occupation"
+                  placeholder="Вид деятельности"
+                  minlength="2"
+                  maxlength="200"
+                  required
+                />
+                <span
+                  class="popup__form-text-error popup__form-text-error_type_occupation"
+                ></span>
+              </label>
+              <button class="popup__form-save-button" type="submit">
+                Сохранить
+              </button>
+            </fieldset>
           </form>
         </div>
       </div>
       <div class="popup popup_type_add">
         <div class="popup__container">
-          <button class="popup__close-button hover" type="button" title="Close"></button>
+          <button
+            class="popup__close-button hover"
+            type="button"
+            title="Close"
+          ></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form" name="add-place-popup">
-            <label>
-              <input
-                type="text"
-                name="place"
-                class="popup__form-text popup__form-text_type_place"
-                placeholder="Название" minlength="2" maxlength="30" required
-              />
-            <span class ="popup__form-text-error popup__form-text-error_type_place">Вы пропустили это поле.</span>
-            </label>
-            <label>
-              <input
-                name="place-link"
-                class="popup__form-text popup__form-text_type_place-link"
-                placeholder="Ссылка на картинку" type="url" required
-              />
-            <span class ="popup__form-text-error popup__form-text-error_type_place-link">Вы пропустили это поле.</span>
-            </label>
-            <button class="popup__form-save-button" type="submit">
-              Создать
-            </button>
+          <form class="popup__form" name="add-place-popup" novalidate>
+            <fieldset class="popup__form-fieldset">
+              <label>
+                <input
+                  type="text"
+                  name="place"
+                  class="popup__form-text popup__form-text_type_place"
+                  placeholder="Название"
+                  minlength="2"
+                  maxlength="30"
+                  required
+                />
+                <span
+                  class="popup__form-text-error popup__form-text-error_type_place"
+                ></span>
+              </label>
+              <label>
+                <input
+                  name="place-link"
+                  class="popup__form-text popup__form-text_type_place-link"
+                  placeholder="Ссылка на картинку"
+                  type="url"
+                  required
+                />
+                <span
+                  class="popup__form-text-error popup__form-text-error_type_place-link"
+                ></span>
+              </label>
+              <button class="popup__form-save-button" type="submit">
+                Создать
+              </button>
+            </fieldset>
           </form>
         </div>
       </div>
       <div class="popup popup_type_zoomimg">
         <div class="popup__container-img">
-          <button class="popup__close-button hover" type="button" title="Close"></button>
+          <button
+            class="popup__close-button hover"
+            type="button"
+            title="Close"
+          ></button>
           <img class="popup__photo-zoom" src="#" alt="Изображение" />
           <h3 class="popup__photo-name"></h3>
         </div>

@@ -25,6 +25,7 @@ const formTypePlaceLink = document.querySelector(
   '.popup__form-text_type_place-link'
 );
 const formAddCard = popupAddCard.querySelector('.popup__form');
+const buttonCreateCard = popupAddCard.querySelector('.popup__form-save-button');
 
 // Zoom
 
@@ -45,15 +46,51 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+function closePopupByEsc() {
+  document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+      const popup = Array.from(document.querySelectorAll('.popup'));
+      popup.forEach((popupElement) => {
+        popupElement.classList.remove('popup_opened');
+      });
+    }
+  });
+}
+
+function closePopupByMouse() {
+  document.addEventListener('click', function (evt) {
+    if (evt.target.classList.contains('popup')) {
+      evt.target.classList.remove('popup_opened');
+    }
+  });
+}
+
+// function closePopupByMouse() {
+//   const popup = Array.from(document.querySelectorAll('.popup'));
+//   popup.forEach((popupElement) => {
+//     popupElement.addEventListener('mousedowm', function (evt) {
+//       popupElement.classList.remove('popup_opened')
+//     })
+//     }
+//     )
+//   };
+
+// if (evt.type === 'mousedown') {
+//     });
+
+
 function openPopupEditProfile() {
   openPopup(popupEditProfile);
   profileFormName.value = profileName.textContent;
+  profileFormName.dispatchEvent(new Event('input'));
   profileFormOccupation.value = profileOccupation.textContent;
+  profileFormOccupation.dispatchEvent(new Event('input'));
 }
 
 function openPopupAddCard() {
   openPopup(popupAddCard);
   formAddCard.reset();
+  buttonCreateCard.classList.add('popup__form-save-button_inactive');
 }
 
 function openPopupZoom(card) {
@@ -122,6 +159,9 @@ function handleFormSubmitAdd(evt) {
 
 // Function Call
 initialCards.reverse().forEach(addCard);
+closePopupByEsc();
+closePopupByMouse();
+
 
 // Events
 
@@ -130,6 +170,7 @@ buttonAddCard.addEventListener('click', openPopupAddCard);
 popupEditProfileCloseButton.addEventListener('click', () =>
   closePopup(popupEditProfile)
 );
+
 popupAddCardCloseButton.addEventListener('click', () =>
   closePopup(popupAddCard)
 );

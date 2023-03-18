@@ -214,30 +214,34 @@
 // console.log(formInput);
 // console.log(formError);
 
-
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(
+const showInputError = (fieldsetElement, inputElement, errorMessage) => {
+  const errorElement = fieldsetElement.querySelector(
     `.popup__form-text-error_type_${inputElement.name}`
   );
-  inputElement.classList.add('popup__form-text-error');
+  console.log(errorElement);
+  // inputElement.classList.add('popup__form-text-error');
   errorElement.textContent = errorMessage;
   errorElement.classList.add('popup__form-text-error_active');
 };
 
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(
+const hideInputError = (fieldsetElement, inputElement) => {
+  const errorElement = fieldsetElement.querySelector(
     `.popup__form-text-error_type_${inputElement.name}`
   );
-  inputElement.classList.remove('popup__form-text-error');
+  // inputElement.classList.remove('popup__form-text-error');
   errorElement.classList.remove('popup__form-text-error_active');
   errorElement.textContent = '';
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (fieldsetElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(
+      fieldsetElement,
+      inputElement,
+      inputElement.validationMessage
+    );
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(fieldsetElement, inputElement);
   }
 };
 
@@ -246,7 +250,6 @@ const hasInvalidInput = (inputList) => {
     return !inputElement.validity.valid;
   });
 };
-
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add('popup__form-save-button_inactive');
@@ -255,15 +258,17 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
-const setEventListeners = (formElement) => {
+const setEventListeners = (fieldsetElement) => {
   const inputList = Array.from(
-    formElement.querySelectorAll('.popup__form-text')
+    fieldsetElement.querySelectorAll('.popup__form-text')
   );
-  const buttonElement = formElement.querySelector('.popup__form-save-button');
+  const buttonElement = fieldsetElement.querySelector(
+    '.popup__form-save-button'
+  );
   toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement);
+      checkInputValidity(fieldsetElement, inputElement);
       toggleButtonState(inputList, buttonElement);
     });
   });
@@ -275,13 +280,26 @@ const enableValidation = () => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
+
     const fieldsetList = Array.from(
       formElement.querySelectorAll('.popup__form-fieldset')
     );
-    fieldsetList.forEach((formElement) => {
-      setEventListeners(formElement);
+
+    fieldsetList.forEach((fieldsetElement) => {
+      setEventListeners(fieldsetElement);
     });
   });
 };
+
+
+
+// const closePopupWindowByEsc = (popup) => {
+//   formList.addEventListener('keydown', function (e) {
+//     if (e.key === 'Escape') {
+//       closePopup(popup);
+//     }
+//   });
+// };
+
+// closePopupWindowByEsc();
 enableValidation();
-console.log(inputList);
