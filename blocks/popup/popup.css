@@ -21,22 +21,10 @@
   background-color: black;
 }
 
-.popup__form-fieldset {
-  padding: 0;
-  border: none;
-  margin: 0;
-  display: block;
-  margin-inline: 0;
-  padding-block: 0;
-  padding-inline: 0;
-  padding-block: 0;
-  min-inline-size: min-content;
-}
-/* 
-.popup__form-text-error_type_name {
-  color: red;
-} */
-
 .popup__form-text-error_active {
   color: red;
+}
+
+.popup__form-text::placeholder {
+  color: #C4C4C4;
 }

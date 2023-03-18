@@ -12,6 +12,7 @@
   background: #000000;
   border-radius: 2px;
   border: 0;
+  cursor: pointer;
 }
 
 @media (max-width: 640px) {
@@ -30,11 +31,10 @@
 
 .popup__form-save-button_inactive {
   
-  color: #B8B8B8;
-  background: #EDEDED;
+  color: #000000;
+  background: none;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  opacity: 0.2;
   pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }

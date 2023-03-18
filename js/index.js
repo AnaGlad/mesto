@@ -51,33 +51,19 @@ function closePopupByEsc() {
     if (evt.key === 'Escape') {
       const popup = Array.from(document.querySelectorAll('.popup'));
       popup.forEach((popupElement) => {
-        popupElement.classList.remove('popup_opened');
+        closePopup (popupElement);
       });
     }
   });
 }
 
 function closePopupByMouse() {
-  document.addEventListener('click', function (evt) {
+  document.addEventListener('mousedown', function (evt) {
     if (evt.target.classList.contains('popup')) {
-      evt.target.classList.remove('popup_opened');
+      closePopup(evt.target);
     }
   });
 }
-
-// function closePopupByMouse() {
-//   const popup = Array.from(document.querySelectorAll('.popup'));
-//   popup.forEach((popupElement) => {
-//     popupElement.addEventListener('mousedowm', function (evt) {
-//       popupElement.classList.remove('popup_opened')
-//     })
-//     }
-//     )
-//   };
-
-// if (evt.type === 'mousedown') {
-//     });
-
 
 function openPopupEditProfile() {
   openPopup(popupEditProfile);

@@ -214,34 +214,28 @@
 // console.log(formInput);
 // console.log(formError);
 
-const showInputError = (fieldsetElement, inputElement, errorMessage) => {
-  const errorElement = fieldsetElement.querySelector(
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(
     `.popup__form-text-error_type_${inputElement.name}`
   );
   console.log(errorElement);
-  // inputElement.classList.add('popup__form-text-error');
   errorElement.textContent = errorMessage;
   errorElement.classList.add('popup__form-text-error_active');
 };
 
-const hideInputError = (fieldsetElement, inputElement) => {
-  const errorElement = fieldsetElement.querySelector(
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(
     `.popup__form-text-error_type_${inputElement.name}`
   );
-  // inputElement.classList.remove('popup__form-text-error');
   errorElement.classList.remove('popup__form-text-error_active');
   errorElement.textContent = '';
 };
 
-const checkInputValidity = (fieldsetElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(
-      fieldsetElement,
-      inputElement,
-      inputElement.validationMessage
-    );
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(fieldsetElement, inputElement);
+    hideInputError(formElement, inputElement);
   }
 };
 
@@ -258,48 +252,35 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
-const setEventListeners = (fieldsetElement) => {
+const setEventListeners = (formElement) => {
   const inputList = Array.from(
-    fieldsetElement.querySelectorAll('.popup__form-text')
+    formElement.querySelectorAll('.popup__form-text')
   );
-  const buttonElement = fieldsetElement.querySelector(
-    '.popup__form-save-button'
-  );
+  const buttonElement = formElement.querySelector('.popup__form-save-button');
   toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(fieldsetElement, inputElement);
+      checkInputValidity(formElement, inputElement);
       toggleButtonState(inputList, buttonElement);
     });
   });
 };
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-
-    const fieldsetList = Array.from(
-      formElement.querySelectorAll('.popup__form-fieldset')
-    );
-
-    fieldsetList.forEach((fieldsetElement) => {
-      setEventListeners(fieldsetElement);
-    });
+    setEventListeners(formElement);
   });
 };
 
-
-
-// const closePopupWindowByEsc = (popup) => {
-//   formList.addEventListener('keydown', function (e) {
-//     if (e.key === 'Escape') {
-//       closePopup(popup);
-//     }
-//   });
-// };
-
-// closePopupWindowByEsc();
-enableValidation();
+enableValidation({
+  formSelector: '.popup__form',//
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+});
