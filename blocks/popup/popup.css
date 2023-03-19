@@ -10,21 +10,3 @@
   display: flex;
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
-
-/* .popup__form-text-error {
-  color: orange;
-} */
-
-.popup__form-save-button_valid {
-  border: 1px solid #fff;
-  color: #fff;
-  background-color: black;
-}
-
-.popup__form-text-error_active {
-  color: red;
-}
-
-.popup__form-text::placeholder {
-  color: #C4C4C4;
-}

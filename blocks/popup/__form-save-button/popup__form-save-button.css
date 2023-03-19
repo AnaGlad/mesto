@@ -28,13 +28,3 @@
 .popup__form-save-button:hover {
   opacity: 0.8;
 }
-
-.popup__form-save-button_inactive {
-  
-  color: #000000;
-  background: none;
-  border: 1px solid #000000;
-  border-radius: 2px;
-  opacity: 0.2;
-  pointer-events: none;
-}
