@@ -3,25 +3,29 @@ const showInputError = (
   errorClass,
   formElement,
   inputElement,
-  errorMessage
+  errorMessage,
+  errorUnderline
 ) => {
   const errorElement = formElement.querySelector(
     `${inputErrorClass}${inputElement.name}`
   );
   errorElement.textContent = errorMessage;
   errorElement.classList.add(errorClass);
+  inputElement.classList.add(errorUnderline);
 };
 
 const hideInputError = (
   inputErrorClass,
   errorClass,
   formElement,
-  inputElement
+  inputElement,
+  errorUnderline
 ) => {
   const errorElement = formElement.querySelector(
     `${inputErrorClass}${inputElement.name}`
   );
   errorElement.classList.remove(errorClass);
+  inputElement.classList.remove(errorUnderline);
   errorElement.textContent = '';
 };
 
@@ -32,14 +36,16 @@ const checkInputValidity = (config, formElement, inputElement) => {
       config.errorClass,
       formElement,
       inputElement,
-      inputElement.validationMessage
+      inputElement.validationMessage,
+      config.errorUnderline
     );
   } else {
     hideInputError(
       config.inputErrorClass,
       config.errorClass,
       formElement,
-      inputElement
+      inputElement,
+      config.errorUnderline
     );
   }
 };
@@ -50,11 +56,21 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
+const activateButton = (buttonElement, inactiveButtonClass) => {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.disabled = false;
+};
+
+const deactivateButton = (buttonElement, inactiveButtonClass) => {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.disabled = true;
+};
+
 const toggleButtonState = (config, inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(config.inactiveButtonClass);
+    deactivateButton(buttonElement, config.inactiveButtonClass);
   } else {
-    buttonElement.classList.remove(config.inactiveButtonClass);
+    activateButton(buttonElement, config.inactiveButtonClass);
   }
 };
 
@@ -82,11 +98,14 @@ const enableValidation = (config) => {
   });
 };
 
-enableValidation({
+const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__form-text',
   submitButtonSelector: '.popup__form-save-button',
   inactiveButtonClass: 'popup__form-save-button_inactive',
   inputErrorClass: '.popup__form-text-error_type_',
   errorClass: 'popup__form-text-error_active',
-});
+  errorUnderline: 'popup__form-text-underline_active',
+};
+
+enableValidation(config);

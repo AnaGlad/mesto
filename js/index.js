@@ -34,7 +34,7 @@ const popupZoomCloseButton = popupZoom.querySelector('.popup__close-button');
 const photoZoom = document.querySelector('.popup__photo-zoom');
 const photoNameZoom = document.querySelector('.popup__photo-name');
 
-const elements = document.querySelector('.elements');
+const cardsContainer = document.querySelector('.elements');
 
 // Functions
 
@@ -83,10 +83,7 @@ function openPopupAddCard() {
   openPopup(popupAddCard);
   formAddCard.reset();
   resetValidationErrors();
-  deactivationButton();
-}
-function deactivationButton() {
-  buttonCreateCard.classList.add('popup__form-save-button_inactive');
+  deactivateButton(buttonCreateCard, 'popup__form-save-button_inactive');
 }
 
 function resetValidationErrors() {
@@ -94,13 +91,15 @@ function resetValidationErrors() {
     '.popup__form-text-error_type_',
     'popup__form-text-error_active',
     popupAddCard,
-    formTypePlace
+    formTypePlace,
+    'popup__form-text-underline_active'
   );
   hideInputError(
     '.popup__form-text-error_type_',
     'popup__form-text-error_active',
     popupAddCard,
-    formTypePlaceLink
+    formTypePlaceLink,
+    'popup__form-text-underline_active'
   );
 }
 
@@ -146,7 +145,7 @@ function createCard(card) {
 }
 
 function addCard(card) {
-  elements.prepend(createCard(card));
+  cardsContainer.prepend(createCard(card));
 }
 
 function handleTrashButton(evt) {
