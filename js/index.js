@@ -94,11 +94,11 @@ function resetValidationErrors() {
   formValidationAdd.hideInputError(formTypePlaceLink);
 }
 
-function openPopupZoom(card) {
+function openPopupZoom(link, name) {
   openPopup(popupZoom);
-  photoZoom.setAttribute('src', card.link);
-  photoNameZoom.textContent = card.name;
-  photoZoom.setAttribute('alt', card.name);
+  photoZoom.setAttribute('src', link);
+  photoNameZoom.textContent = name;
+  photoZoom.setAttribute('alt', name);
 }
 
 function handleFormSubmitEdit(evt) {
@@ -113,7 +113,7 @@ function handleFormSubmitAdd(evt) {
   const newItem = {};
   newItem.name = formTypePlace.value;
   newItem.link = formTypePlaceLink.value;
-  const card = new Card(newItem, '#elements-template');
+  const card = new Card(newItem, '#elements-template', openPopupZoom);
   cardsContainer.prepend(card.createCard());
   closePopup(popupAddCard);
 }
@@ -123,7 +123,7 @@ function handleFormSubmitAdd(evt) {
 closePopupByMouse();
 
 initialCards.reverse().forEach((item) => {
-  const card = new Card(item, '#elements-template');
+  const card = new Card(item, '#elements-template', openPopupZoom);
   cardsContainer.prepend(card.createCard());
 });
 

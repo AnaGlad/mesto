@@ -1,9 +1,10 @@
 export default class Card {
-  constructor(data, cardTemplateId) {
+  constructor(data, cardTemplateId, handleCardZoom) {
     this._link = data.link;
     this._name = data.name;
     this._cardTemplateId = cardTemplateId;
     this._element = undefined;
+    this._handleCardZoom = handleCardZoom;
   }
 
   _createTemplate() {
@@ -22,12 +23,6 @@ export default class Card {
     const trashCard = evt.target.closest('.elements__grid');
     trashCard.remove();
   }
-  _handleCardZoom() {
-    openPopup(popupZoom);
-    photoZoom.setAttribute('src', this._link);
-    photoNameZoom.textContent = this._name;
-    photoZoom.setAttribute('alt', this._name);
-  }
 
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => {
@@ -37,7 +32,7 @@ export default class Card {
       this._handleDelete(evt);
     });
     this._cardImage.addEventListener('click', () => {
-      this._handleCardZoom();
+      this._handleCardZoom(this._link, this._name);
     });
   }
 
@@ -54,5 +49,3 @@ export default class Card {
     return this._element;
   }
 }
-
-
