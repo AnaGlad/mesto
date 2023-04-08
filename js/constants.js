@@ -24,3 +24,13 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
   },
 ];
+
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__form-text',
+  submitButtonSelector: '.popup__form-save-button',
+  inactiveButtonClass: 'popup__form-save-button_inactive',
+  inputErrorClass: '.popup__form-text-error_type_',
+  errorClass: 'popup__form-text-error_active',
+  errorUnderline: 'popup__form-text_underline-active',
+};
