@@ -80,14 +80,13 @@ function openPopupEditProfile() {
   openPopup(popupEditProfile);
   profileFormName.value = profileName.textContent;
   profileFormOccupation.value = profileOccupation.textContent;
-  formValidationEdit.toggleButtonState();
+  formValidationEdit.resetValidationErrors();
 }
 
 function openPopupAddCard() {
   openPopup(popupAddCard);
   formAddCard.reset();
   formValidationAdd.resetValidationErrors();
-  formValidationAdd.toggleButtonState();
 }
 
 function openPopupZoom(link, name) {
