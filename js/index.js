@@ -71,7 +71,9 @@ function closePopupByEsc(evt) {
 function closePopupByMouse() {
   popupOverlay.forEach((overlay) => {
     overlay.addEventListener('mousedown', function (evt) {
-      closePopup(evt.target);
+      if (evt.target.classList.contains('popup')) {
+        closePopup(evt.target);
+      }
     });
   });
 }
