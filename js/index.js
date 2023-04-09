@@ -1,5 +1,6 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
+import { initialCards, config } from './constants.js';
 
 // Edit profile
 
@@ -38,6 +39,7 @@ const photoZoom = document.querySelector('.popup__photo-zoom');
 const photoNameZoom = document.querySelector('.popup__photo-name');
 
 const cardsContainer = document.querySelector('.elements');
+const popupOverlay = document.querySelectorAll('.popup');
 
 // Functions
 
@@ -67,31 +69,25 @@ function closePopupByEsc(evt) {
 }
 
 function closePopupByMouse() {
-  document.addEventListener('mousedown', function (evt) {
-    if (evt.target.classList.contains('popup')) {
+  popupOverlay.forEach((overlay) => {
+    overlay.addEventListener('mousedown', function (evt) {
       closePopup(evt.target);
-    }
+    });
   });
 }
 
 function openPopupEditProfile() {
   openPopup(popupEditProfile);
   profileFormName.value = profileName.textContent;
-  profileFormName.dispatchEvent(new Event('input'));
   profileFormOccupation.value = profileOccupation.textContent;
-  profileFormOccupation.dispatchEvent(new Event('input'));
+  formValidationEdit.toggleButtonState();
 }
 
 function openPopupAddCard() {
   openPopup(popupAddCard);
   formAddCard.reset();
-  resetValidationErrors();
-  formValidationAdd.deactivateButton();
-}
-
-function resetValidationErrors() {
-  formValidationAdd.hideInputError(formTypePlace);
-  formValidationAdd.hideInputError(formTypePlaceLink);
+  formValidationAdd.resetValidationErrors();
+  formValidationAdd.toggleButtonState();
 }
 
 function openPopupZoom(link, name) {
@@ -113,17 +109,20 @@ function handleFormSubmitAdd(evt) {
   const newItem = {};
   newItem.name = formTypePlace.value;
   newItem.link = formTypePlaceLink.value;
-  const card = new Card(newItem, '#elements-template', openPopupZoom);
+  const card = makeNewCard(newItem);
   cardsContainer.prepend(card.createCard());
   closePopup(popupAddCard);
 }
 
+function makeNewCard(element) {
+  return new Card(element, '#elements-template', openPopupZoom);
+}
 // Function Call
 
 closePopupByMouse();
 
 initialCards.reverse().forEach((item) => {
-  const card = new Card(item, '#elements-template', openPopupZoom);
+  const card = makeNewCard(item);
   cardsContainer.prepend(card.createCard());
 });
 

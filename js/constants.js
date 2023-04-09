@@ -1,3 +1,4 @@
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -34,3 +35,5 @@ const config = {
   errorClass: 'popup__form-text-error_active',
   errorUnderline: 'popup__form-text_underline-active',
 };
+
+export  {initialCards, config}
