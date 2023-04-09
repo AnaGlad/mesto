@@ -104,6 +104,10 @@ function handleFormSubmitEdit(evt) {
   closePopup(popupEditProfile);
 }
 
+function makeNewCard(element) {
+  return new Card(element, '#elements-template', openPopupZoom);
+}
+
 function handleFormSubmitAdd(evt) {
   evt.preventDefault();
   const newItem = {};
@@ -114,12 +118,7 @@ function handleFormSubmitAdd(evt) {
   closePopup(popupAddCard);
 }
 
-function makeNewCard(element) {
-  return new Card(element, '#elements-template', openPopupZoom);
-}
 // Function Call
-
-closePopupByMouse();
 
 initialCards.reverse().forEach((item) => {
   const card = makeNewCard(item);
@@ -131,6 +130,8 @@ formValidationAdd.enableValidation();
 
 const formValidationEdit = new FormValidator(config, formEditProfile);
 formValidationEdit.enableValidation();
+
+closePopupByMouse();
 
 // Events
 
