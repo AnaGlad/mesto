@@ -1,10 +1,10 @@
 export default class Card {
-  constructor(data, cardTemplateId, handleCardZoom) {
+  constructor(data, cardTemplateId, handleCardClick) {
     this._link = data.link;
     this._name = data.name;
     this._cardTemplateId = cardTemplateId;
     this._element = undefined;
-    this._handleCardZoom = handleCardZoom;
+    this._handleCardClick = handleCardClick;
   }
 
   _createTemplate() {
@@ -31,7 +31,7 @@ export default class Card {
       this._handleDelete(evt);
     });
     this._cardImage.addEventListener('click', () => {
-      this._handleCardZoom(this._link, this._name);
+      this._handleCardClick(this._link, this._name);
     });
   }
 
