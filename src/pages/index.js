@@ -1,11 +1,11 @@
-import Card from '../js/Card.js';
-import FormValidator from '../js/FormValidator.js';
-import PopupWithForm from '../js/PopupWithForm.js';
-import PopupWithImage from '../js/PopupWithImage.js';
-import UserInfo from '../js/UserInfo.js';
-import Section from '../js/Section.js';
-
-import { initialCards, config } from '../js/constants.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
+import Section from '../components/Section.js';
+import { initialCards, config } from '../components/constants.js';
+import './index.css';
 
 // Edit profile
 
@@ -27,6 +27,8 @@ const formTypePlaceLink = document.querySelector(
   '.popup__form-text_type_place-link'
 );
 const formAddCard = popupAddCard.querySelector('.popup__form');
+
+//Classes
 
 const formValidationAdd = new FormValidator(config, formAddCard);
 const formValidationEdit = new FormValidator(config, formEditProfile);
