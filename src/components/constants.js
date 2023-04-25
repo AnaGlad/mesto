@@ -1,4 +1,3 @@
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -36,4 +35,4 @@ const config = {
   errorUnderline: 'popup__form-text_underline-active',
 };
 
-export  {initialCards, config}
+export { initialCards, config };

@@ -3,14 +3,16 @@ export default class Card {
     this._link = data.link;
     this._name = data.name;
     this._cardTemplateId = cardTemplateId;
-    this._element = undefined;
+    // this._element = undefined;
     this._handleCardClick = handleCardClick;
   }
 
   _createTemplate() {
     const elementTemplate = document
       .querySelector(this._cardTemplateId)
-      .content.cloneNode(true);
+      .content.querySelector('.elements__grid')
+      .cloneNode(true);
+    console.log(elementTemplate);
     return elementTemplate;
   }
 
@@ -18,17 +20,17 @@ export default class Card {
     this._likeButton.classList.toggle('elements__like-button_active');
   }
 
-  _handleDelete(evt) {
-    const trashCard = evt.target.closest('.elements__grid');
-    trashCard.remove();
+  _handleDelete() {
+    this._element.closest('.elements__grid').remove();
+    this._element = null;
   }
 
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => {
       this._handleLike();
     });
-    this._trashButton.addEventListener('click', (evt) => {
-      this._handleDelete(evt);
+    this._trashButton.addEventListener('click', () => {
+      this._handleDelete();
     });
     this._cardImage.addEventListener('click', () => {
       this._handleCardClick(this._link, this._name);
