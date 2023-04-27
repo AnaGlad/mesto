@@ -48,9 +48,8 @@ cardSection.rendererAllItems();
 
 // Functions
 
-function handleFormSubmitEdit(evt) {
-  evt.preventDefault();
-  userInfo.setUserInfo(popupEditElement._getInputValues());
+function handleFormSubmitEdit(itemValues) {
+  userInfo.setUserInfo(itemValues);
   popupEditElement.closePopup();
 }
 
@@ -62,9 +61,8 @@ function makeNewCard(element) {
   return new Card(element, '#elements-template', openZoom).createCard();
 }
 
-function handleFormSubmitAdd(evt) {
-  evt.preventDefault();
-  cardSection.addItem(popupAddElement._getInputValues());
+function handleFormSubmitAdd(itemValues) {
+  cardSection.addItem(itemValues);
   popupAddElement.closePopup();
 }
 

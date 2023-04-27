@@ -12,7 +12,6 @@ export default class Card {
       .querySelector(this._cardTemplateId)
       .content.querySelector('.elements__grid')
       .cloneNode(true);
-    console.log(elementTemplate);
     return elementTemplate;
   }
 
