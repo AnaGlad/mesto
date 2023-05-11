@@ -6,9 +6,10 @@ import PopupWithSubmit from '../components/PopupWithSubmit.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import Api from '../components/Api.js';
-import { config, options } from '../components/constants.js';
 import './index.css';
 import {
+  config,
+  options,
   buttonEditProfile,
   profileFormName,
   profileFormOccupation,
@@ -17,7 +18,7 @@ import {
   formAddCard,
   buttonChangeAvatar,
   formChangeAvatar,
-} from '../components/globalConstants.js';
+} from '../utils/constants.js';
 
 //Classes
 
@@ -49,45 +50,36 @@ const popupDeleteElement = new PopupWithSubmit('.popup_type_remove');
 
 // Functions
 function handleFormSubmitChangeAvatar(itemValues) {
-  api
-    .changeAvatar(itemValues['change-avatar'])
-    .then((res) => {
-      userInfo.setUserAvatar(res.avatar);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      popupChangeAvatarElement.closePopup();
-    });
+  return api.changeAvatar(itemValues['change-avatar']).then((res) => {
+    userInfo.setUserAvatar(res.avatar);
+  });
 }
 
 function handleFormSubmitEdit(result) {
-  api
-    .changeUserInfo(result.name, result.occupation)
-    .then((res) => {
-      userInfo.setUserInfo({ name: res.name, occupation: res.about });
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      popupEditElement.closePopup();
-    });
+  return api.changeUserInfo(result.name, result.occupation).then((res) => {
+    userInfo.setUserInfo({ name: res.name, occupation: res.about });
+  });
 }
 
 function handleFormSubmitAdd(itemValues) {
-  api
-    .postNewCard(itemValues.name, itemValues.link)
-    .then((res) => {
-      cardSection.addItem(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      popupAddElement.closePopup();
+  return api.postNewCard(itemValues.name, itemValues.link).then((res) => {
+    cardSection.addItem(res);
+  });
+}
+function handlerDeleteWithSubmit(handleDelete, cardId) {
+  popupDeleteElement.setHandler(() => {
+    return api.deleteCard(cardId).then(() => {
+      handleDelete();
     });
+  });
+  popupDeleteElement.openPopup();
+}
+function handleAddLike(cardId) {
+  return api.putLike(cardId);
+}
+
+function handleDeleteLike(cardId) {
+  return api.deleteLike(cardId);
 }
 
 function openZoom(link, name) {
@@ -99,9 +91,10 @@ function makeNewCard(element) {
     element,
     '#elements-template',
     openZoom,
-    popupDeleteElement,
+    handlerDeleteWithSubmit,
     userInfo.getUserInfo().id,
-    api
+    handleAddLike,
+    handleDeleteLike
   ).createCard();
 }
 

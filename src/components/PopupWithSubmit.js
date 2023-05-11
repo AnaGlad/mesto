@@ -7,11 +7,14 @@ export default class PopupWithSubmit extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._popupForm.addEventListener('submit', (evt) => {
-      // console.log(evt);
-      // console.log(this);
       evt.preventDefault();
-      this._handleCardRemove();
-      this.closePopup();
+      this._handleCardRemove()
+        .then(() => {
+          this.closePopup();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
   }
   setHandler(handler) {

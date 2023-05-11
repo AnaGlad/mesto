@@ -4,19 +4,21 @@ export default class Card {
     data,
     cardTemplateId,
     handleCardClick,
-    popupWithSubmit,
+    handlerDeleteWithSubmit,
     userId,
-    api
+    handlerPutLike,
+    handlerDeleteLike
   ) {
     this._link = data.link;
     this._name = data.name;
     this._ownerId = data.owner._id;
     this._cardId = data._id;
-    this._api = api;
+    this._handlerPutLike = handlerPutLike;
+    this._handlerDeleteLike = handlerDeleteLike;
     this._likes = data.likes;
     this._cardTemplateId = cardTemplateId;
     this._handleCardClick = handleCardClick;
-    this._popupWithSubmit = popupWithSubmit;
+    this._handlerDeleteWithSubmit = handlerDeleteWithSubmit;
     this._userId = userId;
   }
 
@@ -28,36 +30,44 @@ export default class Card {
     return elementTemplate;
   }
 
-  _handleLike() {
-    this._countLike();
+  _handleLikeContent(res) {
+    this._counter.textContent = res.likes.length;
     this._likeButton.classList.toggle('elements__like-button_active');
   }
 
   _countLike() {
     if (this._likeButton.classList.contains('elements__like-button_active')) {
-      this._counter.textContent = Number(this._counter.textContent) - 1;
-      this._api.deleteLike(this._cardId);
+      this._handlerDeleteLike(this._cardId)
+        .then((res) => {
+          this._handleLikeContent(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
-      this._counter.textContent = Number(this._counter.textContent) + 1;
-      this._api.putLike(this._cardId);
+      this._handlerPutLike(this._cardId)
+        .then((res) => {
+          this._handleLikeContent(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
 
   _handleDelete() {
     this._element.closest('.elements__grid').remove();
-    this._api.deleteCard(this._cardId);
     this._element = null;
   }
 
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => {
-      this._handleLike();
+      this._countLike();
     });
     this._trashButton.addEventListener('click', () => {
-      this._popupWithSubmit.setHandler(() => {
-        this._handleDelete();
-      });
-      this._popupWithSubmit.openPopup();
+      this._handlerDeleteWithSubmit(() => {
+        return this._handleDelete();
+      }, this._cardId);
     });
     this._cardImage.addEventListener('click', () => {
       this._handleCardClick(this._link, this._name);
